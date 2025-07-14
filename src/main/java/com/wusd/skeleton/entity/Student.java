@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * @author Wusd
  * @date 2025/7/11
@@ -14,9 +16,14 @@ import lombok.Setter;
 @TableName("student")
 @Setter
 @Getter
-public class Student {
+public class Student implements Comparable<Student> {
     @TableId("id")
     private Long id;
     @TableField("student_name")
     private String studentName;
+
+    @Override
+    public int compareTo(Student other) {
+        return id.compareTo(other.id);
+    }
 }

@@ -21,6 +21,8 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentService service;
+    @Autowired
+    private StudentMapperExt studentMapperExt;
 
     @GetMapping("/{id}")
     public Student getById(@PathVariable("id") Long id) {
@@ -34,8 +36,6 @@ public class StudentController {
         return list;
     }
 
-    @Autowired
-    private StudentMapperExt studentMapperExt;
     @GetMapping("/ext/{id}")
     public Student extGetById(@PathVariable("id") Long id) {
         Student student = studentMapperExt.selectById(id);
