@@ -29,10 +29,10 @@ public class TestRedisController {
 
     @GetMapping("/obj")
     public Student obj() {
-        redisTemplate.opsForValue().set("obj", new Student(){{
-            setId(1L);
-            setStudentName("吴盛东");
-        }});
+        Student student = new Student();
+        student.setId(1L);
+        student.setStudentName("wusd");
+        redisTemplate.opsForValue().set("obj", student);
         return (Student) redisTemplate.opsForValue().get("obj");
     }
 
