@@ -1,17 +1,72 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/skeleton?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true
+#    username: root
+#    password: Wusd123..
+
 server:
   port: 9010
+  servlet:
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/skeleton?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true
-    username: root
-    password: Wusd123..
+  profiles:
+    active: develop
+  main:
+    allow-bean-definition-overriding: true
   redis:
     host: 127.0.0.1
     port: 6379
     database: 0
+  shardingsphere:
+    datasource:
+      names: m1
+      m1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/order_db?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+        username: root
+        password: "Wusd123.."
+
+    rules:
+      sharding:
+        props:
+          sql:
+            show: true
+        tables:
+          t_order:
+            actual-data-nodes: m1.t_order_$->{1..2}
+            key-generate-strategy:
+              column: order_id
+              key-generator-name: snowflake
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: t-order-inline
+
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+
+        sharding-algorithms:
+          t-order-inline:
+            type: INLINE
+            props:
+              algorithm-expression: t_order_$->{order_id % 2 + 1}
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+    cache-enabled: false
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+logging:
+  level:
+    root: info
+    com.wusd.skeleton: debug
+    org.apache.shardingsphere: debug
+  config: classpath:logback-spring.xml

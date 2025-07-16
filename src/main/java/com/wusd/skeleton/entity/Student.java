@@ -5,9 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
-
 /**
  * @author Wusd
  * @date 2025/7/11
