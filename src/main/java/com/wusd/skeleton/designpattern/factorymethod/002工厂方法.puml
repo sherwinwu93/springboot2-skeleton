@@ -1,0 +1,20 @@
+@startuml
+'工厂方法模式
+'抽象产品
+class Product {
+}
+'抽象工厂
+class Factory {
+void factoryMethod()
+}
+'具体产品
+class ConcreteProduct {
+}
+'具体工厂
+class ConcreteFactory {
+void create()
+}
+ConcreteProduct --|> Product
+ConcreteFactory --|> Factory
+ConcreteFactory ..> ConcreteProduct : <<create>>
+@enduml

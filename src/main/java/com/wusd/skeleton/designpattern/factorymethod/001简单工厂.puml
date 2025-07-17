@@ -1,0 +1,26 @@
+@startuml
+'简单工厂模式
+class Client {
+}
+interface Logger {
+    void writeLog()
+}
+class LoggerFactory {
+    Logger createLogger(String args)
+}
+class FileLogger {
+    void writeLog()
+}
+class DatabaseLogger {
+    void writeLog()
+}
+
+'依赖
+Client ..> Logger
+Client ..> LoggerFactory
+LoggerFactory ..> FileLogger: <<create>>
+LoggerFactory ..> DatabaseLogger: <<create>>
+'实现
+FileLogger ..|> Logger
+DatabaseLogger ..|> Logger
+@enduml

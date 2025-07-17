@@ -167,10 +167,10 @@ public class RedissonTest {
     private static void rSortSet() {
         RSortedSet<Student> rSortedSet = redissonClient.getSortedSet("sortSetKey");
         Student st1 = new Student();
-        st1.setId(2L);
+        st1.setStudentId(2L);
         st1.setStudentName("张三");
         Student st2 = new Student();
-        st2.setId(1L);
+        st2.setStudentId(1L);
         st2.setStudentName("李四");
         rSortedSet.add(st1);
         rSortedSet.add(st2);
@@ -180,11 +180,11 @@ public class RedissonTest {
     private static void rSet() {
         RSet<Student> rSet = redissonClient.getSet("setKey");
         rSet.add(new Student() {{
-            setId(1L);
+            setStudentId(1L);
             setStudentName("张三");
         }});
         rSet.add(new Student() {{
-            setId(2L);
+            setStudentId(2L);
             setStudentName("李四");
         }});
         System.out.println("rSet.get()->" + JSON.toJSONString(redissonClient.getSet("setKey")));
@@ -193,11 +193,11 @@ public class RedissonTest {
     private static void rList() {
         RList<Student> rList = redissonClient.getList("listKey");
         rList.add(new Student() {{
-            setId(1L);
+            setStudentId(1L);
             setStudentName("张三");
         }});
         rList.add(new Student() {{
-            setId(2L);
+            setStudentId(2L);
             setStudentName("李四");
         }});
         System.out.println("rList.get()->" + JSON.toJSONString(redissonClient.getList("listKey")));
@@ -213,7 +213,7 @@ public class RedissonTest {
 
     private static void obj() {
         Student student = new Student() {{
-            setId(1L);
+            setStudentId(1L);
             setStudentName("wusd");
         }};
         RBucket<Student> rBucket = redissonClient.getBucket("objKey");

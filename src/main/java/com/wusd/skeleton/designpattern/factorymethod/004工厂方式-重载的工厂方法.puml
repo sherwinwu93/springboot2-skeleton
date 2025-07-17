@@ -1,0 +1,19 @@
+@startuml
+interface LoggerFactory {
+Logger createLogger()
+Logger createLogger(String args)
+Logger createLogger(Object obj)
+}
+class FileLoggerFactory {
+Logger createLogger()
+Logger createLogger(String args)
+Logger createLogger(Object obj)
+}
+class DatabaseLoggerFactory {
+Logger createLogger()
+Logger createLogger(String args)
+Logger createLogger(Object obj)
+}
+FileLoggerFactory ..up|> LoggerFactory
+DatabaseLoggerFactory ..up|> LoggerFactory
+@enduml

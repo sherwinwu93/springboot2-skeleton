@@ -1,0 +1,15 @@
+@startuml
+class ChartDisplay{
+void display(String type)
+}
+class PieChart {
+void display()
+}
+class BarChart {
+void display()
+}
+'依赖
+ChartDisplay ..right> PieChart
+'依赖
+ChartDisplay ..right> BarChart
+@enduml

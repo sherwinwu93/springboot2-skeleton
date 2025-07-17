@@ -1,0 +1,19 @@
+@startuml
+class EmailSender{
+void send(Customer customer)
+}
+class Customer {
+String name
+String email
+String getName()
+String getEmail()
+void setName()
+void setEmail()
+}
+EmailSender ..down> Customer
+
+class CommonCustomer
+CommonCustomer --up|> Customer
+class VIPCustomer
+VIPCustomer --up|> Customer
+@enduml

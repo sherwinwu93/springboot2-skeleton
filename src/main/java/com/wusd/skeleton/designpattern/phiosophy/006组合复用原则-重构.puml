@@ -1,0 +1,16 @@
+@startuml
+class CustomerDao{
+DBUtil util
+void addCustomer()
+}
+note "util.getConnection();" as N1
+CustomerDao ..N1
+class DBUtil {
+Connection getConnection()
+}
+CustomerDao --right> DBUtil
+class OracleDBUtil{
+Connection getConnection()
+}
+OracleDBUtil --up|>DBUtil
+@enduml

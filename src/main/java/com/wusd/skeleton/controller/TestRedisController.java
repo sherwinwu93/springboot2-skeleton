@@ -30,7 +30,7 @@ public class TestRedisController {
     @GetMapping("/obj")
     public Student obj() {
         Student student = new Student();
-        student.setId(1L);
+        student.setStudentId(1L);
         student.setStudentName("wusd");
         redisTemplate.opsForValue().set("obj", student);
         return (Student) redisTemplate.opsForValue().get("obj");

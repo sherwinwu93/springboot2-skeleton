@@ -10,17 +10,17 @@ import lombok.Setter;
  * @date 2025/7/11
  * @description
  */
-@TableName("student")
+@TableName("t_student")
 @Setter
 @Getter
 public class Student implements Comparable<Student> {
-    @TableId("id")
-    private Long id;
+    @TableId("student_id")
+    private Long studentId;
     @TableField("student_name")
     private String studentName;
 
     @Override
     public int compareTo(Student other) {
-        return id.compareTo(other.id);
+        return studentId.compareTo(other.studentId);
     }
 }

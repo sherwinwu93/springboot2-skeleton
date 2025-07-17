@@ -1,0 +1,14 @@
+@startuml
+class Button
+class List
+class Label
+class ComboBox
+class TextBox
+Button --down> List
+Button --down> Label
+Button --down> ComboBox
+Button --down> TextBox
+List --down ComboBox
+List --down TextBox
+ComboBox --right TextBox
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+class Client
+class Logger {
+void writeLog()
+}
+class LoggerFactory {
+Logger createLogger()
+}
+class FileLoggerFactory {
+Logger createLogger()
+}
+class FileLogger {
+void writeLog()
+}
+class DatabaseLoggerFactory {
+void createLogger
+}
+class DatabaseLogger {
+void writeLog()
+}
+
+Client ..down> LoggerFactory
+Client ..down> Logger
+
+FileLoggerFactory ..up|> LoggerFactory
+FileLogger ..up|> Logger
+FileLoggerFactory ..right> FileLogger : <<create>>
+
+DatabaseLoggerFactory ..up|> LoggerFactory
+DatabaseLogger ..up|> Logger
+DatabaseLoggerFactory ..right> DatabaseLogger : <<create>>
+
+@enduml

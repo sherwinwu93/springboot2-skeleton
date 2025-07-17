@@ -1,0 +1,22 @@
+@startuml
+class ChartDisplay{
+AbstractChart chart
+void setChart(AbstractChart chart)
+void display(String type)
+}
+note left of ChartDisplay:  chart.display()
+
+abstract class AbstractChart {
+void display()
+}
+'依赖 成员属性
+ChartDisplay --right> AbstractChart
+class PieChart {
+void display()
+}
+PieChart --up|> AbstractChart
+class BarChart {
+void display()
+}
+BarChart --up|> AbstractChart
+@enduml

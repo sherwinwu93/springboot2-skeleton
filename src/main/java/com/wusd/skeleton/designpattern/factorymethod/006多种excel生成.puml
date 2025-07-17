@@ -1,0 +1,36 @@
+@startuml
+'模板抽象工厂
+'抽象工厂
+interface WBFactory {
+HSSFWorkBook createWB()
+}
+'产品
+class HSSFWorkBook {
+}
+'客户端
+class Service {
+void export(HSSFWorkBook wb)
+}
+Service ..down> WBFactory
+Service ..down> HSSFWorkBook
+
+abstract class AbstractWBFactory {
+HSSFWorkBook createWB()
+int initWb()
+void writeData()
+}
+AbstractWBFactory --up|> WBFactory
+
+class LocationWBFactory {
+HSSFWorkBook createWB()
+}
+LocationWBFactory --up|> AbstractWBFactory
+LocationWBFactory ..right> HSSFWorkBook : <<create>>
+
+class BuildWBFactory {
+HSSFWorkBook createWB()
+}
+BuildWBFactory ..up|> WBFactory
+BuildWBFactory ..right> HSSFWorkBook : <<create>>
+
+@enduml

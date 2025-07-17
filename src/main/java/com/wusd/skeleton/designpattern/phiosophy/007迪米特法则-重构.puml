@@ -1,0 +1,13 @@
+@startuml
+class Mediator
+class Button
+Mediator --> Button
+class List
+Mediator --> List
+class Label
+Mediator --> Label
+class ComboBox
+Mediator --> ComboBox
+class TextBox
+Mediator --> TextBox
+@enduml

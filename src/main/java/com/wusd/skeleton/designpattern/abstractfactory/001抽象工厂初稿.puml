@@ -1,0 +1,34 @@
+@startuml
+class Client
+interface ButtonFactory
+interface Button
+interface TextFieldFactory
+interface TextField
+Client ..down>ButtonFactory
+Client ..down>Button
+Client ..down>TextFieldFactory
+Client ..down>TextField
+class SpringButtonFactory
+SpringButtonFactory ..up|> ButtonFactory
+class SpringButton
+SpringButton ..up|> Button
+SpringButtonFactory ..right> SpringButton : <<create>>
+
+class SummerButtonFactory
+SummerButtonFactory ..up|> ButtonFactory
+class SummerButton
+SummerButton ..up|> Button
+SummerButtonFactory ..right> SummerButton :<<create>>
+
+class SpringTextFieldFactory
+SpringTextFieldFactory..up|> TextFieldFactory
+class SpringTextField
+SpringTextField ..up|> TextField
+SpringTextFieldFactory ..right> SpringTextField : <<create>>
+
+class SummerTextFieldFactory
+SummerTextFieldFactory ..up|> TextFieldFactory
+class SummerTextField
+SummerTextField ..up|> TextField
+SummerTextFieldFactory ..right> SummerTextField :<<create>>
+@enduml

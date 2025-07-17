@@ -1,0 +1,36 @@
+@startuml
+class Client
+interface Factory
+interface AbstractProductB
+interface AbstractProductA
+Client ..down> Factory
+Client ..down>AbstractProductA
+Client ..down>AbstractProductB
+
+class ConcreteFactory1 {
+AbstractProductA createProductA()
+AbstractProductB createProductB()
+}
+ConcreteFactory1 ..up|>Factory
+class ConcreteProductA1
+ConcreteProductA1 ..up|>AbstractProductA
+class ConcreteProductB1
+ConcreteProductB1 ..up|>AbstractProductB
+ConcreteFactory1 ..right> ConcreteProductA1 : <<create>>
+ConcreteFactory1 ..right> ConcreteProductB1 : <<create>>
+
+class ConcreteFactory2 {
+AbstractProductA createProductA()
+AbstractProductB createProductB()
+}
+ConcreteFactory2 ..up|>Factory
+class ConcreteProductA2
+ConcreteProductA2 ..up|>AbstractProductA
+class ConcreteProductB2
+ConcreteProductB2 ..up|>AbstractProductB
+
+ConcreteFactory2 ..right> ConcreteProductA2 : <<create>>
+ConcreteFactory2 ..right> ConcreteProductB2 : <<create>>
+
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+'从工厂创建产品
+class Chart{
+void display()
+}
+class ChartFactory{
+Chart getChart(String type)
+}
+
+class HistogramChart{
+void display()
+}
+HistogramChart ..up|> Chart
+ChartFactory ..right> HistogramChart : <<create>>
+
+class PieChart{
+void display()
+}
+PieChart ..up|> Chart
+ChartFactory ..right> PieChart : <<create>>
+
+class LineChart{
+void display()
+}
+LineChart ..up|> Chart
+ChartFactory ..right> LineChart : <<create>>
+@enduml

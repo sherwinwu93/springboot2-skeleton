@@ -1,0 +1,12 @@
+@startuml
+class DBUtil {
+Connection getConnection()
+}
+class CustomerDao {
+void addCustomer()
+}
+note "super.getConnection()" as N1
+CustomerDao ..right N1
+
+CustomerDao --up|> DBUtil
+@enduml

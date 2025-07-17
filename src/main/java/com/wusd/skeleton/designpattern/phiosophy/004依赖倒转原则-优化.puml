@@ -1,0 +1,24 @@
+@startuml
+class CustomerDao{
+void addCustomers()
+}
+abstract class DATAConvertor {
+void readFile()
+}
+CustomerDao ..left> DATAConvertor
+
+note "config.xml" as N1
+note "<className>...</className>" as N2
+CustomerDao ..right> N1
+N1 -right N2
+
+class TXTDATAConvertor {
+void readFile()
+}
+TXTDATAConvertor --up|> DATAConvertor
+
+class ExcelDATAConvertor {
+void readFile()
+}
+ExcelDATAConvertor --up|> DATAConvertor
+@enduml

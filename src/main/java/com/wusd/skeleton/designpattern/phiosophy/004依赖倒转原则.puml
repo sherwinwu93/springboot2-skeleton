@@ -1,0 +1,13 @@
+@startuml
+class CustomerDao{
+void addCustomers()
+}
+class TXTDATAConvertor {
+void readFile()
+}
+CustomerDao ..right> TXTDATAConvertor
+class ExcelDATAConvertor {
+void readFile()
+}
+CustomerDao ..right> ExcelDATAConvertor
+@enduml

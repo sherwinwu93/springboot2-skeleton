@@ -1,0 +1,20 @@
+@startuml
+'需求:工厂生成不同的产品
+class Client{
+}
+class Factory{
+Product factoryMethod(String arg)
+}
+interface Product
+Client ..> Factory
+Client ..> Product
+
+class ConcreteProductA
+ConcreteProductA --up> Product
+Factory ..right> ConcreteProductA : <<create>>
+
+class ConcreteProductB
+ConcreteProductB --up> Product
+Factory ..right> ConcreteProductB : <<create>>
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class Client
+interface DataHandler{
+dataRead()
+}
+interface XMLTransformer{
+transformToXML()
+}
+interface ChartHandler{
+createChart()
+displayChart()
+}
+interface ReportHandler{
+createReport()
+displayReport()
+}
+
+Client ..right>DataHandler
+Client ..right>ChartHandler
+
+class ConcreteClass {
+dataRead()
+createChart()
+displayChart()
+}
+
+ConcreteClass ..up|> DataHandler
+ConcreteClass ..up|> ChartHandler
+@enduml

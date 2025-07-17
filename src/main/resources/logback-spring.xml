@@ -8,18 +8,23 @@
     <!-- 日志地址 -->
     <property name="logPath" value="/zzb/logs/"></property>
     <!--<property name="logPath" value=""></property>-->
+    <!--日志模式-->
+    <property scope="context" name="logPattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level %logger{20} - %msg%n"/>
 
     <!-- 最大保存时间 -->
     <property name="maxHistory" value="30"/>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%yellow(%-5p) %date{HH:mm:ss.SSS} - %cyan(%-45c{1}) %m%n</pattern>
+<!--            <pattern>%yellow(%-5p) %date{HH:mm:ss.SSS} - %cyan(%-45c{1}) %m%n</pattern>-->
+            <pattern>${logPattern}</pattern>
         </encoder>
     </appender>
     <appender name="f_all" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${logPath}${applicationName}.log</file>
         <encoder>
-            <pattern>[%-5p] %date{HH:mm:ss.SSS,Australia/Perth} - %-45c{1} %m%n</pattern>
+<!--            <pattern>[%-5p] %date{HH:mm:ss.SSS,Australia/Perth} - %-45c{1} %m%n</pattern>-->
+            <pattern>${logPattern}</pattern>
             <charset>UTF-8</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -30,7 +35,8 @@
     <appender name="f_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${logPath}${applicationName}-error.log</file>
         <encoder>
-            <pattern>[%-5p] %date{HH:mm:ss.SSS,Australia/Perth} - %-45c{1} %m%n</pattern>
+<!--            <pattern>[%-5p] %date{HH:mm:ss.SSS,Australia/Perth} - %-45c{1} %m%n</pattern>-->
+            <pattern>${logPattern}</pattern>
             <charset>UTF-8</charset>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
