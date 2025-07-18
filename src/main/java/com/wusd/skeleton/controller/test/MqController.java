@@ -1,4 +1,4 @@
-package com.wusd.skeleton.controller;
+package com.wusd.skeleton.controller.test;
 
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

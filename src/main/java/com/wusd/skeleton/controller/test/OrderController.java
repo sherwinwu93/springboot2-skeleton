@@ -1,6 +1,7 @@
-package com.wusd.skeleton.controller;
+package com.wusd.skeleton.controller.test;
 
-import com.wusd.skeleton.entity.Order;
+import com.wusd.skeleton.entity.OrderLi;
+import com.wusd.skeleton.entity.po.Order;
 import com.wusd.skeleton.service.OrderService;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class OrderController {
 
     @GetMapping("/{orderId}")
     public void insert(@PathVariable("orderId") Long orderId) {
-        Order order = new Order();
+        OrderLi order = new OrderLi();
         order.setOrderId(orderId);
         order.setPrice(new BigDecimal(RandomUtils.nextDouble(0.0, 2.0)));
         orderService.save(order);

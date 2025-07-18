@@ -1,10 +1,9 @@
-package com.wusd.skeleton.controller;
+package com.wusd.skeleton.controller.test;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.github.xiaoymin.knife4j.annotations.ApiOperationSort;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.wusd.skeleton.entity.Student;
+import com.wusd.skeleton.entity.po.Student;
 import com.wusd.skeleton.mapper.ext.StudentMapperExt;
 import com.wusd.skeleton.query.Pager;
 import com.wusd.skeleton.service.StudentService;

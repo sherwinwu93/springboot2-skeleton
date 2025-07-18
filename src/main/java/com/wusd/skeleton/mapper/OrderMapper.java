@@ -1,12 +1,16 @@
 package com.wusd.skeleton.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wusd.skeleton.entity.Order;
+import com.wusd.skeleton.entity.po.Order;
 
 /**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
  * @author Wusd
- * @date 2025/7/16
- * @description
+ * @since 2025-07-18
  */
 public interface OrderMapper extends BaseMapper<Order> {
+
 }

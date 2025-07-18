@@ -1,6 +1,6 @@
-package com.wusd.skeleton.controller;
+package com.wusd.skeleton.controller.test;
 
-import com.wusd.skeleton.entity.Student;
+import com.wusd.skeleton.entity.StudentLi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -31,12 +31,12 @@ public class TestRedisController {
     }
 
     @GetMapping("/obj")
-    public Student obj() {
-        Student student = new Student();
+    public StudentLi obj() {
+        StudentLi student = new StudentLi();
         student.setStudentId(1L);
         student.setStudentName("wusd");
         redisTemplate.opsForValue().set("obj", student);
-        return (Student) redisTemplate.opsForValue().get("obj");
+        return (StudentLi) redisTemplate.opsForValue().get("obj");
     }
 
     @GetMapping("/keys")

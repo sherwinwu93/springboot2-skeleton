@@ -1,7 +1,7 @@
 package com.wusd.skeleton;
 
 import com.alibaba.fastjson.JSON;
-import com.wusd.skeleton.entity.Student;
+import com.wusd.skeleton.entity.StudentLi;
 import org.redisson.Redisson;
 import org.redisson.RedissonRedLock;
 import org.redisson.api.*;
@@ -165,11 +165,11 @@ public class RedissonTest {
     }
 
     private static void rSortSet() {
-        RSortedSet<Student> rSortedSet = redissonClient.getSortedSet("sortSetKey");
-        Student st1 = new Student();
+        RSortedSet<StudentLi> rSortedSet = redissonClient.getSortedSet("sortSetKey");
+        StudentLi st1 = new StudentLi();
         st1.setStudentId(2L);
         st1.setStudentName("张三");
-        Student st2 = new Student();
+        StudentLi st2 = new StudentLi();
         st2.setStudentId(1L);
         st2.setStudentName("李四");
         rSortedSet.add(st1);
@@ -178,12 +178,12 @@ public class RedissonTest {
     }
 
     private static void rSet() {
-        RSet<Student> rSet = redissonClient.getSet("setKey");
-        rSet.add(new Student() {{
+        RSet<StudentLi> rSet = redissonClient.getSet("setKey");
+        rSet.add(new StudentLi() {{
             setStudentId(1L);
             setStudentName("张三");
         }});
-        rSet.add(new Student() {{
+        rSet.add(new StudentLi() {{
             setStudentId(2L);
             setStudentName("李四");
         }});
@@ -191,12 +191,12 @@ public class RedissonTest {
     }
 
     private static void rList() {
-        RList<Student> rList = redissonClient.getList("listKey");
-        rList.add(new Student() {{
+        RList<StudentLi> rList = redissonClient.getList("listKey");
+        rList.add(new StudentLi() {{
             setStudentId(1L);
             setStudentName("张三");
         }});
-        rList.add(new Student() {{
+        rList.add(new StudentLi() {{
             setStudentId(2L);
             setStudentName("李四");
         }});
@@ -212,11 +212,11 @@ public class RedissonTest {
     }
 
     private static void obj() {
-        Student student = new Student() {{
+        StudentLi student = new StudentLi() {{
             setStudentId(1L);
             setStudentName("wusd");
         }};
-        RBucket<Student> rBucket = redissonClient.getBucket("objKey");
+        RBucket<StudentLi> rBucket = redissonClient.getBucket("objKey");
         rBucket.set(student, 30, TimeUnit.SECONDS);
         System.out.println("rBucket.get()->" + JSON.toJSONString(redissonClient.getBucket("objKey").get()));
     }

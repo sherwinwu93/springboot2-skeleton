@@ -1,7 +1,7 @@
 package com.wusd.skeleton.utils;
 
 import com.github.pagehelper.PageInfo;
-import com.wusd.skeleton.entity.Student;
+import com.wusd.skeleton.entity.StudentLi;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * @description
  */
 public class PageInfoUtils {
-    public static PageInfo<Student> createPageInfo(List<Student> list) {
+    public static <T> PageInfo<T> createPageInfo(List<T> list) {
         if (CollectionUtils.isEmpty(list)) return new PageInfo<>();
         return new PageInfo<>(list);
     }

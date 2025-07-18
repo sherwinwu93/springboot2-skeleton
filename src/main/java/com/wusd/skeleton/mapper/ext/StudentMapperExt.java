@@ -1,6 +1,7 @@
 package com.wusd.skeleton.mapper.ext;
 
-import com.wusd.skeleton.entity.Student;
+import com.wusd.skeleton.entity.StudentLi;
+import com.wusd.skeleton.entity.po.Student;
 
 /**
  * @author Wusd

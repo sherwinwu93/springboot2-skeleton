@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.wusd.skeleton.entity.po.Order;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
  */
 @TableName("t_order")
 @Data
-public class Order {
+public class OrderLi extends Order {
     @TableId(type = IdType.AUTO)
     private Long orderId;
     @TableField("price")
