@@ -1,9 +1,4 @@
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/skeleton?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true
-#    username: root
-#    password: Wusd123..
+wsl-ip: 172.23.141.84
 
 server:
   port: 9010
@@ -25,7 +20,7 @@ logging:
     org.apache.shardingsphere: debug
   config: classpath:logback-spring.xml
 rocketmq:
-  name-server: 10.99.4.129:9876
+  name-server: ${wsl-ip}:9876
   consumer:
     group: testGroup250717
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
@@ -51,9 +46,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
   redis:
-    host: 127.0.0.1
+    host: ${wsl-ip}
     port: 6379
     database: 0
+    password: Wusd123..
   shardingsphere:
     props:
       sql-show: true
@@ -63,7 +59,7 @@ spring:
       m1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/order_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        url: jdbc:mysql://${wsl-ip}:3306/order_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
         username: root
         password: Wusd123..
     rules:
