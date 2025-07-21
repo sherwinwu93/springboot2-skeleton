@@ -1,0 +1,6 @@
+spring:
+  redis:
+    host: ${wsl-ip}
+    port: 6379
+    database: 0
+    password: Wusd123..

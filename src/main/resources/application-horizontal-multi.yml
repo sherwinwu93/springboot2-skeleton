@@ -1,0 +1,39 @@
+spring:
+  shardingsphere:
+    props:
+      sql-show: true
+      rewrite-bindings: false
+    datasource:
+      names: m1,m2
+      m1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://${wsl-ip}:3306/order_db_1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        username: root
+        password: Wusd123..
+      m2:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://${wsl-ip}:3306/order_db_2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        username: root
+        password: Wusd123..
+    rules:
+      sharding:
+        tables:
+          t_order:
+            actual-data-nodes: order_db$->{1..2}.t_student
+            table-strategy:
+              standard:
+                sharding-column: student_id
+                sharding-algorithm-name: t_student_inline
+            key-generate-strategy:
+              column: student_id
+              key-generator-name: snowflake
+        sharding-algorithms:
+          t_student_inline:
+            type: INLINE
+            props:
+              algorithm-expression: t_student_$->{student_id % 2 + 1}
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
