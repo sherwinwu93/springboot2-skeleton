@@ -25,9 +25,9 @@ CREATE TABLE `t_order_1`  (
   `order_id` bigint NOT NULL COMMENT '订单id',
   `price` decimal(10, 2) NOT NULL COMMENT '订单价格',
   `user_id` bigint NOT NULL COMMENT '下单用户id',
-  `status` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '订单状态',
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单状态',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for t_order_2
@@ -37,9 +37,9 @@ CREATE TABLE `t_order_2`  (
   `order_id` bigint NOT NULL COMMENT '订单id',
   `price` decimal(10, 2) NOT NULL COMMENT '订单价格',
   `user_id` bigint NOT NULL COMMENT '下单用户id',
-  `status` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '订单状态',
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单状态',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for t_student
