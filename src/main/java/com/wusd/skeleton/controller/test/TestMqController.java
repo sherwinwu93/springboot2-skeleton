@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @description
  */
 @RestController
-@RequestMapping("/mq")
-public class MqController {
+@RequestMapping("/test/mq")
+public class TestMqController {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
     private String topic = "string";
