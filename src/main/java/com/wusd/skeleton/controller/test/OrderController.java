@@ -28,7 +28,6 @@ public class OrderController {
     @GetMapping("/list")
     public List<Order> list() {
         return orderService.lambdaQuery()
-                .eq(Order::getOrderId, 1)
                 .list();
     }
 

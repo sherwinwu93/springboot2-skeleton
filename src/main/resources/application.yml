@@ -26,26 +26,26 @@ mybatis-plus:
 mybatis:
   mapper-locations: classpath:com/wusd/skeleton/mapper/**/*.xml
 
-rocketmq:
-  name-server: ${wsl-ip}:9876
-  consumer:
-    group: testGroup250717
-    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
-    pull-batch-size: 10
-  producer:
-    group: testGroup250717
-    # 发送消息超时时间，默认3000
-    sendMessageTimeout: 10000
-    # 发送消息失败重试次数，默认2
-    retryTimesWhenSendFailed: 2
-    # 异步消息重试此处，默认2
-    retryTimesWhenSendAsyncFailed: 2
-    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
-    maxMessageSize: 4096
-    # 压缩消息阈值，默认4k(1024 * 4)
-    compressMessageBodyThreshold: 4096
-    # 是否在内部发送失败时重试另一个broker，默认false
-    retryNextServer: false
+#rocketmq:
+#  name-server: ${wsl-ip}:9876
+#  consumer:
+#    group: testGroup250717
+#    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
+#    pull-batch-size: 10
+#  producer:
+#    group: testGroup250717
+#    # 发送消息超时时间，默认3000
+#    sendMessageTimeout: 10000
+#    # 发送消息失败重试次数，默认2
+#    retryTimesWhenSendFailed: 2
+#    # 异步消息重试此处，默认2
+#    retryTimesWhenSendAsyncFailed: 2
+#    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
+#    maxMessageSize: 4096
+#    # 压缩消息阈值，默认4k(1024 * 4)
+#    compressMessageBodyThreshold: 4096
+#    # 是否在内部发送失败时重试另一个broker，默认false
+#    retryNextServer: false
 
 spring:
   profiles:
@@ -59,31 +59,19 @@ spring:
     password: Wusd123..
   shardingsphere:
     datasource:
-      names: db1,db2,db1s,db2s
+      names: db1,db2
       db1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://${wsl-ip}:3306/db1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
         username: root
-        password: Wusd123..
+        password: rootpass
       db2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://${wsl-ip}:3306/db2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
         username: root
-        password: Wusd123..
-      db1s:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${wsl-ip}:3307/db1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
-        username: root
-        password: Wusd123..
-      db2s:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${wsl-ip}:3307/db2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
-        username: root
-        password: Wusd123..
+        password: rootpass
     rules:
       sharding:
         tables:
