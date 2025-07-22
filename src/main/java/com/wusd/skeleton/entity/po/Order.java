@@ -2,7 +2,6 @@ package com.wusd.skeleton.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,7 +18,7 @@ import java.math.BigDecimal;
  * </p>
  *
  * @author Wusd
- * @since 2025-07-18
+ * @since 2025-07-22
  */
 @Getter
 @Setter
@@ -57,8 +56,4 @@ public class Order implements Serializable {
     @TableField("status")
     @ApiModelProperty("订单状态")
     private String status;
-
-    @TableLogic
-    @TableField("del_flag")
-    private Integer delFlag;
 }

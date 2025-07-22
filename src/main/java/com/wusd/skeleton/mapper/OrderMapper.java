@@ -9,7 +9,7 @@ import com.wusd.skeleton.entity.po.Order;
  * </p>
  *
  * @author Wusd
- * @since 2025-07-18
+ * @since 2025-07-22
  */
 public interface OrderMapper extends BaseMapper<Order> {
 

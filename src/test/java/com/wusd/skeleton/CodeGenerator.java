@@ -13,10 +13,10 @@ import java.sql.Types;
  * @description
  */
 public class CodeGenerator {
-    private static final String URL = "jdbc:mysql://localhost:3306/order_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
+    private static final String URL = "jdbc:mysql://localhost:3306/db1?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "Wusd123..";
-    private static final String[] TABLES = {"t_order", "t_student"};
+    private static final String[] TABLES = {"t_order", "t_student", "t_user_like"};
     private static final String[] TABLE_PREFIXS = {"t_"};
 
     public static void main(String[] args) {

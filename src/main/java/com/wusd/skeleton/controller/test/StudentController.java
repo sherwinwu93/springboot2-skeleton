@@ -36,18 +36,18 @@ public class StudentController {
         return student;
     }
 
+    @GetMapping("/i/{studentName}")
+    public void insert(@PathVariable("studentName") String studentName) {
+        Student student = new Student();
+        student.setStudentName(studentName);
+        service.save(student);
+    }
+
     @GetMapping("/list")
     @ApiOperationSupport(order = 2)
     public List<Student> list() {
         List<Student> list = service.list();
         return list;
-    }
-
-    @GetMapping("/ext/{id}")
-    @ApiOperationSupport(order = 3)
-    public Student extGetById(@PathVariable("id") Long id) {
-        Student student = studentMapperExt.selectById(id);
-        return student;
     }
 
     @GetMapping("/pageInfo")

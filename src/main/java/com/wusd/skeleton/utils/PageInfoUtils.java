@@ -1,8 +1,7 @@
 package com.wusd.skeleton.utils;
 
 import com.github.pagehelper.PageInfo;
-import com.wusd.skeleton.entity.StudentLi;
-import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 

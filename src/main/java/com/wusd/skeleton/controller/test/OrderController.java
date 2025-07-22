@@ -32,10 +32,10 @@ public class OrderController {
                 .list();
     }
 
-    @GetMapping("/{orderId}")
-    public void insert(@PathVariable("orderId") Long orderId) {
+    @GetMapping("/{userId}")
+    public void insert(@PathVariable("userId") Long userId) {
         OrderLi order = new OrderLi();
-        order.setOrderId(orderId);
+        order.setUserId(userId);
         order.setPrice(new BigDecimal(RandomUtils.nextDouble(0.0, 2.0)));
         orderService.save(order);
     }

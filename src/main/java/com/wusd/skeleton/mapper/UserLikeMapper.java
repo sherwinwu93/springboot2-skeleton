@@ -1,7 +1,7 @@
 package com.wusd.skeleton.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wusd.skeleton.entity.po.Student;
+import com.wusd.skeleton.entity.po.UserLike;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.wusd.skeleton.entity.po.Student;
  * @author Wusd
  * @since 2025-07-22
  */
-public interface StudentMapper extends BaseMapper<Student> {
+public interface UserLikeMapper extends BaseMapper<UserLike> {
 
 }
