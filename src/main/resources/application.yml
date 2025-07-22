@@ -59,24 +59,36 @@ spring:
     password: Wusd123..
   shardingsphere:
     datasource:
-      names: db1,db2
+      names: db1,db2,db1s,db2s
       db1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${wsl-ip}:3306/db1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        url: jdbc:mysql://${wsl-ip}:3306/db1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
         username: root
-        password: rootpass
+        password: Wusd123..
       db2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${wsl-ip}:3306/db2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        url: jdbc:mysql://${wsl-ip}:3306/db2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
         username: root
-        password: rootpass
+        password: Wusd123..
+      db1s:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://${wsl-ip}:3307/db1?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        username: root
+        password: Wusd123..
+      db2s:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://${wsl-ip}:3307/db2?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+        username: root
+        password: Wusd123..
     rules:
       sharding:
         tables:
           t_order:
-            actual-data-nodes: db1.t_order$->{1..2}
+            actual-data-nodes: ms1.t_order$->{1..2}
             table-strategy:
               standard:
                 sharding-column: order_id
@@ -85,7 +97,7 @@ spring:
               column: order_id
               key-generator-name: snowflake
           t_student:
-            actual-data-nodes: db$->{1..2}.t_student
+            actual-data-nodes: ms$->{1..2}.t_student
             database-strategy:
               standard:
                 sharding-column: student_id
@@ -101,10 +113,29 @@ spring:
           t_student_db_hash:
             type: INLINE
             props:
-              algorithm-expression: db$->{student_id % 2 + 1}
+              algorithm-expression: ms$->{student_id % 2 + 1}
         key-generators:
           snowflake:
             type: SNOWFLAKE
+      readwrite-splitting:
+        data-sources:
+          load-balancers:
+            roundRobin:
+              type: ROUND_ROBIN
+          ms1:
+            props:
+              auto-aware-data-source-name: db1
+              write-data-source-name: db1
+              read-data-source-names: db1s
+              load-balancer-name: roundRobin
+            type: Static
+          ms2:
+            props:
+              auto-aware-data-source-name: db2
+              write-data-source-name: db2
+              read-data-source-names: db2s
+              load-balancer-name: roundRobin
+            type: Static
     props:
       sql-show: true
       rewrite-bindings: false

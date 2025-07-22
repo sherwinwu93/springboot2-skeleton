@@ -47,11 +47,11 @@
             <scope>runtime</scope>
         </dependency>
         <!-- Druid连接池 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid</artifactId>-->
-<!--            <version>1.2.8</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.8</version>
+        </dependency>
         <!-- 实现对 Sharding-JDBC 的自动化配置 -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
